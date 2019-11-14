@@ -67,12 +67,7 @@ setup(name='omero-user-token',
       ],
       tests_require=[],
       cmdclass={'test': PyTest},
-      data_files=[(
-          'config', [
-              'message_consumer.cfg.example',
-              'message-consumer.service'
-          ]
-      )],
+      data_files=[],
       entry_points={
           'console_scripts': [
               'omero_user_token = omero_user_token.cli.omero_user_token:main',
