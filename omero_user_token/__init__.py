@@ -81,3 +81,5 @@ def getter():
             finally:
                 client.closeSession()
             return token
+    else:
+        sys.exit('ERROR: No token available, `omero_user_token set` required!')
