@@ -8,11 +8,12 @@
 # missing please request a copy by contacting info@glencoesoftware.com
 
 import os
+import sys
 
 import omero
 import omero.all
 
-from configparser import ConfigParser
+from ConfigParser import ConfigParser
 
 from omero.rtypes import unwrap
 
@@ -68,4 +69,15 @@ def getter():
     token_path = assert_and_get_token_path()
     if os.path.exists(token_path):
         with open(token_path, 'r') as token_file:
-            return token_file.read()
+            token = token_file.read().strip()
+            omero_session_key = token[:token.find('@')]
+            host, port = token[token.find('@') + 1:].split(':')
+            client = omero.client(host.encode('utf-8'), int(port))
+            try:
+                session = client.joinSession(omero_session_key)
+                session.detachOnDestroy()
+            except Exception:
+                sys.exit('ERROR: Token %s invalid!' % token)
+            finally:
+                client.closeSession()
+            return token
