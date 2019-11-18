@@ -48,6 +48,7 @@ if not CONFIG.has_section('server'):
 
 def setter(server, port, user, password, time_to_idle):
     client = omero.client(server.encode('utf-8'), port)
+    client.setAgent("UserToken")
     try:
         session = client.createSession(user, password)
         admin_service = session.getAdminService()
