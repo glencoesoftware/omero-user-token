@@ -8,6 +8,7 @@
 # missing please request a copy by contacting info@glencoesoftware.com
 
 import os
+import stat
 import sys
 
 import omero
@@ -23,7 +24,7 @@ def assert_and_get_token_dir():
     token_dir = os.path.join(home, '.omero_user_token')
     if not os.path.exists(token_dir):
         os.makedirs(token_dir)
-    os.chmod(token_dir, 0700)
+    os.chmod(token_dir, stat.S_IRWXU)
     return token_dir
 
 
