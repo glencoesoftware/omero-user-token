@@ -14,7 +14,7 @@ import sys
 import omero
 import omero.all
 
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 
 from omero.rtypes import unwrap
 
