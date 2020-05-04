@@ -64,7 +64,8 @@ setup(name='omero-user-token',
       setup_requires=['flake8'],
       install_requires=[
           'click==7.0',
-          'configparser==4.0.2'
+          'configparser==4.0.2',
+          'six==1.14.0'
       ],
       tests_require=[],
       cmdclass={'test': PyTest},
