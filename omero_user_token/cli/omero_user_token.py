@@ -35,7 +35,7 @@ def cli():
 )
 @click.option(
     '--time_to_idle', default=2**31 - 1, type=int,
-    help="Number of seconds to set the timeToIdle value to; "
+    help="Number of milliseconds to set the timeToIdle value to; "
          "defaults to maximum allowed"
 )
 def _set(server, port, user, time_to_idle):
