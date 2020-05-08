@@ -14,6 +14,9 @@ import click
 from .. import CONFIG, getter, setter
 
 
+TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000
+
+
 @click.group()
 def cli():
     pass
@@ -34,7 +37,7 @@ def cli():
     help="OMERO username"
 )
 @click.option(
-    '--time_to_idle', default=2**31 - 1, type=int,
+    '--time_to_idle', default=TWENTY_FOUR_HOURS_MS, type=int,
     help="Number of milliseconds to set the timeToIdle value to; "
          "defaults to maximum allowed"
 )
