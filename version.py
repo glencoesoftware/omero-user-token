@@ -68,6 +68,7 @@ def readGitVersion():
         data, _ = proc.communicate()
         if proc.returncode:
             return None
+        data = data.decode('utf8')
         ver = data.splitlines()[0].strip()
     except Exception:
         return None
