@@ -70,24 +70,38 @@ def setter(server, port, user, password, time_to_idle):
         client.closeSession()
 
 
-def getter():
+def login():
+    """
+    Returns an omero.client object from the current user token.  The
+    session the token refers to has had a join attempt made upon it.  If
+    the token file does not exist a FileNotFoundError will be raised.
+    """
     token_path = assert_and_get_token_path()
-    if os.path.exists(token_path):
-        with open(token_path, 'r') as token_file:
-            token = token_file.read().strip()
-            omero_session_key = token[:token.find('@')]
-            host, port = token[token.find('@') + 1:].split(':')
-            if six.PY2:
-                client = omero.client(host.encode('utf-8'), int(port))
-            else:
-                client = omero.client(host, int(port))
-            try:
-                session = client.joinSession(omero_session_key)
-                session.detachOnDestroy()
-            except Exception:
-                sys.exit('ERROR: Token %s invalid!' % token)
-            finally:
-                client.closeSession()
-            return token
-    else:
+    with open(token_path, 'r') as token_file:
+        token = token_file.read().strip()
+        omero_session_key = token[:token.find('@')]
+        host, port = token[token.find('@') + 1:].split(':')
+        client = None
+        if six.PY2:
+            client = omero.client(host.encode('utf-8'), int(port))
+        else:
+            client = omero.client(host, int(port))
+        try:
+            session = client.joinSession(omero_session_key)
+            session.detachOnDestroy()
+        except Exception:
+            pass
+        return client
+
+
+def getter():
+    try:
+        client = login()
+        try:
+            client.getSession()
+        except Exception:
+            sys.exit('ERROR: Token is invalid!')
+        finally:
+            client.closeSession()
+    except FileNotFoundError:
         sys.exit('ERROR: No token available, `omero_user_token set` required!')
