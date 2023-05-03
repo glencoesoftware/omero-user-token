@@ -50,7 +50,7 @@ import subprocess
 import sys
 
 
-RELEASE_VERSION_FILE = 'version.txt'
+RELEASE_VERSION_FILE = 'omero_user_token/version.py'
 
 # http://www.python.org/dev/peps/pep-0386/
 _PEP386_SHORT_VERSION_RE = r'\d+(?:\.\d+)+(?:(?:[abc]|rc)\d+(?:\.\d+)*)?'
@@ -68,7 +68,7 @@ def readGitVersion():
         data, _ = proc.communicate()
         if proc.returncode:
             return None
-        ver = data.splitlines()[0].strip()
+        ver = data.splitlines()[0].strip().decode('utf-8')
     except Exception:
         return None
 
