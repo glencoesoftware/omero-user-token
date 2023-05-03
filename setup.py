@@ -50,13 +50,13 @@ setup(name='omero-user-token',
       description='OMERO user token management system',
       long_description=read('README.md'),
       long_description_content_type='text/markdown',
-      classifiers=[],  # Get strings from
-                       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      classifiers=[
+          'License :: OSI Approved :: GNU General Public License v2 (GPLv2)'
+      ],
       keywords='',
       author='Glencoe Software, Inc.',
       author_email='info@glencoesoftware.com',
       url='https://github.com/glencoesoftware/omero-user-token',
-      license='License :: OSI Approved :: BSD License',
       packages=find_packages(),
       zip_safe=True,
       include_package_data=True,
@@ -65,7 +65,8 @@ setup(name='omero-user-token',
       install_requires=[
           'click==7.0',
           'configparser==4.0.2',
-          'six==1.14.0'
+          'six==1.14.0',
+          'omero-py>5.6',
       ],
       tests_require=[],
       cmdclass={'test': PyTest},

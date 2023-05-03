@@ -34,6 +34,5 @@ The token format is as follows:
 
 ## License
 
-The iSyntax converter is distributed under the terms of the BSD license.
+OMERO user token is distributed under the terms of the GPL v2 license.
 Please see `LICENSE.txt` for further details.
-
