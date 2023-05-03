@@ -5,8 +5,8 @@ API under non-interactive, headless conditions.
 
 ## Requirements
 
-* OMERO 5.4.0 or later
-
+* Python 3.6+
+* OMERO.server 5.6
 
 ## Usage
 
