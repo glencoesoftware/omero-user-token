@@ -46,6 +46,7 @@ def read(fname):
 
 
 setup(name='omero-user-token',
+      python_requires='>=3.6',
       version=version.getVersion(),
       description='OMERO user token management system',
       long_description=read('README.md'),
@@ -73,7 +74,6 @@ setup(name='omero-user-token',
       install_requires=[
           'click==7.0',
           'configparser==4.0.2',
-          'six==1.14.0',
           'omero-py>5.6',
       ],
       tests_require=[],

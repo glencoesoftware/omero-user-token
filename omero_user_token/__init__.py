@@ -9,7 +9,6 @@
 
 import os
 import stat
-import six
 import sys
 
 import omero
@@ -49,10 +48,7 @@ if not CONFIG.has_section('server'):
 
 
 def setter(server, port, user, password, time_to_idle):
-    if six.PY2:
-        client = omero.client(server.encode('utf-8'), port)
-    else:
-        client = omero.client(server, port)
+    client = omero.client(server, port)
     try:
         session = client.createSession(user, password)
         admin_service = session.getAdminService()
@@ -77,10 +73,7 @@ def getter():
             token = token_file.read().strip()
             omero_session_key = token[:token.find('@')]
             host, port = token[token.find('@') + 1:].split(':')
-            if six.PY2:
-                client = omero.client(host.encode('utf-8'), int(port))
-            else:
-                client = omero.client(host, int(port))
+            client = omero.client(host, int(port))
             try:
                 session = client.joinSession(omero_session_key)
                 session.detachOnDestroy()
