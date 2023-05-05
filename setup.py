@@ -46,17 +46,26 @@ def read(fname):
 
 
 setup(name='omero-user-token',
+      python_requires='>=3.6',
       version=version.getVersion(),
       description='OMERO user token management system',
       long_description=read('README.md'),
       long_description_content_type='text/markdown',
-      classifiers=[],  # Get strings from
-                       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      classifiers=[
+          'Development Status :: 5 - Production/Stable',
+          'License :: OSI Approved :: GNU General Public License v2 (GPLv2)'
+          'Intended Audience :: Science/Research',
+          'Intended Audience :: Developers',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.8',
+          'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10'
+      ],
       keywords='',
       author='Glencoe Software, Inc.',
       author_email='info@glencoesoftware.com',
       url='https://github.com/glencoesoftware/omero-user-token',
-      license='License :: OSI Approved :: BSD License',
       packages=find_packages(),
       zip_safe=True,
       include_package_data=True,
@@ -65,7 +74,7 @@ setup(name='omero-user-token',
       install_requires=[
           'click==7.0',
           'configparser==4.0.2',
-          'six==1.14.0'
+          'omero-py>5.6',
       ],
       tests_require=[],
       cmdclass={'test': PyTest},

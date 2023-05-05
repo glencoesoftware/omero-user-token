@@ -5,8 +5,8 @@ API under non-interactive, headless conditions.
 
 ## Requirements
 
-* OMERO 5.4.0 or later
-
+* Python 3.6+
+* OMERO.server 5.6
 
 ## Usage
 
@@ -32,8 +32,34 @@ The token format is as follows:
 
     <omero_session_key>@<host>:<port>
 
+## Example usage
+
+### Bash:
+```bash
+token=$(omero_user_token get)
+if [ $? -ne 0]; then
+    echo "No valid token found"
+    exit 1
+fi
+key=$(echo "${token}" | sed -e 's/^\(.*\)@.*:.*$/\1/')
+host=$(echo "${token}" | sed -e 's/^.*@\(.*\):.*$/\1/')
+port=$(echo "${token}" | sed -e 's/^.*@.*:\(.*\)$/\1/')
+echo "Connecting to ${host}:${port} with key ${key}"
+```
+
+### Python:
+```python
+from omero_user_token import getter
+token = getter()
+if token is not None:
+    omero_session_key = token[:token.find('@')]
+    host, port = token[token.find('@') + 1:].split(':')
+    port = int(port)
+    key = token[:token.find('@')]
+    print(f"Connecting to {host}:{port} with key {key}")
+```
+
 ## License
 
-The iSyntax converter is distributed under the terms of the BSD license.
+OMERO user token is distributed under the terms of the GPL v2 license.
 Please see `LICENSE.txt` for further details.
-
