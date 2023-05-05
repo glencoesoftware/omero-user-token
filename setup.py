@@ -53,7 +53,7 @@ setup(name='omero-user-token',
       long_description_content_type='text/markdown',
       classifiers=[
           'Development Status :: 5 - Production/Stable',
-          'License :: OSI Approved :: GNU General Public License v2 (GPLv2)'
+          'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
           'Intended Audience :: Science/Research',
           'Intended Audience :: Developers',
           'Programming Language :: Python :: 3.6',
