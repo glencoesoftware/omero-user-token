@@ -36,39 +36,27 @@ The token format is as follows:
 
 ### Bash:
 ```bash
-if omero_user_token get; then
-    echo "Found valid token\n"
-    token=$(omero_user_token get)
-    key=$(echo "${token}" | cut -d "@" -f 1)
-    server_details=$(echo "${token}" | cut -d "@" -f 2)
-    host=$(echo "${server_details}" | cut -d ":" -f 1)
-    port=$(echo "${server_details}" | cut -d ":" -f 2)
-    echo "Connecting to ${host}:${port} with key ${key}"
-else
+token=$(omero_user_token get)
+if [ $? -ne 0]; then
     echo "No valid token found"
-    exit -1
+    exit 1
 fi
+key=$(echo "${token}" | sed -e 's/^\(.*\)@.*:.*$/\1/')
+host=$(echo "${token}" | sed -e 's/^.*@\(.*\):.*$/\1/')
+port=$(echo "${token}" | sed -e 's/^.*@.*:\(.*\)$/\1/')
+echo "Connecting to ${host}:${port} with key ${key}"
 ```
 
 ### Python:
 ```python
-import subprocess
-import sys
-
-command = ['omero_user_token', 'get']
-
-completed = subprocess.run(
-    command, timeout=60,
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE)
-if completed.returncode != 0:
-    print("Non-zero return code " + str(completed.returncode))
-    sys.exit(completed.stderr.decode('utf8'))
-token = completed.stdout.decode('utf8')
-host, port = token[token.find('@') + 1:].split(':')
-port = int(port)
-key = token[:token.find('@')]
-print(f"Connecting to {host}:{port} with key {key}")
+from omero_user_token import getter
+token = getter()
+if token is not None:
+    omero_session_key = token[:token.find('@')]
+    host, port = token[token.find('@') + 1:].split(':')
+    port = int(port)
+    key = token[:token.find('@')]
+    print(f"Connecting to {host}:{port} with key {key}")
 ```
 
 ## License
