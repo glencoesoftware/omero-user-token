@@ -1,0 +1,8 @@
+https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20221003/zeroc_ice-3.6.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl; platform_system=="Linux" and python_version=="3.8"
+https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20221003/zeroc_ice-3.6.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl; platform_system=="Linux" and python_version=="3.9"
+https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20221003/zeroc_ice-3.6.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl; platform_system=="Linux" and python_version=="3.10"
+https://github.com/glencoesoftware/zeroc-ice-py-macos-x86_64/releases/download/20220722/zeroc_ice-3.6.5-cp38-cp38-macosx_10_15_x86_64.whl; platform_system!="Windows" and platform_system!="Linux" and python_version=="3.8"
+https://github.com/glencoesoftware/zeroc-ice-py-macos-x86_64/releases/download/20220722/zeroc_ice-3.6.5-cp39-cp39-macosx_10_15_x86_64.whl; platform_system!="Windows" and platform_system!="Linux" and python_version=="3.9"
+https://github.com/glencoesoftware/zeroc-ice-py-macos-x86_64/releases/download/20220722/zeroc_ice-3.6.5-cp310-cp310-macosx_10_15_x86_64.whl; platform_system!="Windows" and platform_system!="Linux" and python_version=="3.10"
+flake8
+pytest
