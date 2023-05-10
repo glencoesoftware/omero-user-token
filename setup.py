@@ -72,7 +72,7 @@ setup(name='omero-user-token',
       platforms='any',
       setup_requires=['flake8'],
       install_requires=[
-          'click==7.0',
+          'click>=7.0',
           'configparser==4.0.2',
           'omero-py>5.6',
       ],
