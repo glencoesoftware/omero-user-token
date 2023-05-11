@@ -20,8 +20,10 @@ from omero.rtypes import unwrap
 
 
 def assert_and_get_token_dir():
-    home = os.path.expanduser('~')
-    token_dir = os.path.join(home, '.omero_user_token')
+    token_dir = os.getenv('OMERO_USER_TOKEN_DIR', default=None)
+    if token_dir is None:
+        home = os.path.expanduser('~')
+        token_dir = os.path.join(home, '.omero_user_token')
     if not os.path.exists(token_dir):
         os.makedirs(token_dir)
     os.chmod(token_dir, stat.S_IRWXU)
