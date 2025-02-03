@@ -46,7 +46,7 @@ def read(fname):
 
 
 setup(name='omero-user-token',
-      python_requires='>=3.6',
+      python_requires='>=3.9',
       version=version.getVersion(),
       description='OMERO user token management system',
       long_description=read('README.md'),
@@ -56,11 +56,10 @@ setup(name='omero-user-token',
           'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
           'Intended Audience :: Science/Research',
           'Intended Audience :: Developers',
-          'Programming Language :: Python :: 3.6',
-          'Programming Language :: Python :: 3.7',
-          'Programming Language :: Python :: 3.8',
           'Programming Language :: Python :: 3.9',
           'Programming Language :: Python :: 3.10'
+          'Programming Language :: Python :: 3.11'
+          'Programming Language :: Python :: 3.12'
       ],
       keywords='',
       author='Glencoe Software, Inc.',
