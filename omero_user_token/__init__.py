@@ -95,10 +95,11 @@ def getter():
     try:
         token = get_token()
         client = login(token)
+        host = client.getProperty("omero.host")
         try:
             client.getSession()
         except Exception:
-            sys.exit('ERROR: Token is invalid!')
+            sys.exit(f'ERROR: Token for {host} is invalid!')
         finally:
             client.closeSession()
         return token

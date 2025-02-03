@@ -44,7 +44,7 @@ def cli():
 def _set(server, port, user, time_to_idle):
     password = getpass.getpass("Password: ")
     token = setter(server, port, user, password, time_to_idle)
-    print('Successfuly set token: %s' % token)
+    print('Successfully set token: %s' % token)
 
 
 @click.command()
