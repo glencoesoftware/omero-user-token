@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["version"]
+name = "omero-user-token"
+description = "OMERO user token management system"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+    'Intended Audience :: Science/Research',
+    'Intended Audience :: Developers',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+]
+dependencies = [
+    'click>=7.0',
+    'configparser==4.0.2',
+    'omero-py>5.6',
+]
+requires-python = ">=3.9"
+authors = [
+    {name = "Glencoe Software, Inc.", email="info@glencoesoftware.com"},
+]
+
+[project.urls]
+Repository = "https://github.com/glencoesoftware/omero-user-token"
+
+[project.scripts]
+omero_user_token = "omero_user_token.cli.omero_user_token:main"
+omero-user-token = "omero_user_token.cli.omero_user_token:main"
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp39-cp39-manylinux_2_28_x86_64.whl ; platform_system=='Linux' and python_version=='3.9'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp310-cp310-manylinux_2_28_x86_64.whl ; platform_system=='Linux' and python_version=='3.10'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp311-cp311-manylinux_2_28_x86_64.whl ; platform_system=='Linux' and python_version=='3.11'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp312-cp312-manylinux_2_28_x86_64.whl ; platform_system=='Linux' and python_version=='3.12'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-macos-x86_64/releases/download/20231130/zeroc_ice-3.6.5-cp39-cp39-macosx_11_0_x86_64.whl ; platform_system=='Darwin' and python_version=='3.9'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-macos-universal2/releases/download/20240131/zeroc_ice-3.6.5-cp310-cp310-macosx_11_0_universal2.whl ; platform_system=='Darwin' and python_version=='3.10'",
+    "zeroc-ice @ https://github.com/glencoesoftware/zeroc-ice-py-win-x86_64/releases/download/20240325/zeroc_ice-3.6.5-cp39-cp39-win_amd64.whl ; platform_system=='Windows' and python_version=='3.9'"
+]
+
+[tool.setuptools_scm]
