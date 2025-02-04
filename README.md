@@ -5,16 +5,16 @@ API under non-interactive, headless conditions.
 
 ## Requirements
 
-* Python 3.6+
+* Python 3.9+
 * OMERO.server 5.6
 
 ## Usage
 
 Creating a user token and making it active:
 
-    omero_user_token set
+    omero-user-token set
 
-Please see `omero_user_token set --help` for detailed information.  The
+Please see `omero-user-token set --help` for detailed information.  The
 default server hostname and port can be set in
 `${HOME}/.omero_user_token/config` using an INI file compatible style:
 
@@ -24,7 +24,7 @@ default server hostname and port can be set in
 
 Retrieving the current active token (validation will be performed):
 
-    omero_user_token get
+    omero-user-token get
 
 ## Token format
 
@@ -36,7 +36,7 @@ The token format is as follows:
 
 ### Bash:
 ```bash
-token=$(omero_user_token get)
+token=$(omero-user-token get)
 if [ $? -ne 0]; then
     echo "No valid token found"
     exit 1
